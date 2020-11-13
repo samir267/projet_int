@@ -1,0 +1,44 @@
+<h3>{{titre}}</h3>
+<ul>
+<li *ngFor="let t of tab;index as indice;count as compter">{{t}}
+    <button (click)="onPosition(indice,compter)" >click</button></li>
+</ul>
+
+
+<h3>{{titre1}}</h3>
+<ul>
+<li *ngFor="let t of tab;index as indice;count as compter">{{t}}
+<button *ngIf="t%2==0" (click)="onPosition(indice)">position</button>  </li>
+</ul>
+
+
+
+<h3>3.Affichage des éléments pairs du tableau</h3>
+<ul>
+<ng container *ngFor="let t of tab ;index as indice;count as compter">
+<li *ngIf="t%2==0">{{t}}<button *ngIf="t%2==0" (click)="onPosition(indice)">position</button></li>
+</ng>
+</ul>
+
+<h3>pairs/impairs</h3>
+<ul>
+
+<ng container *ngFor="let t of tab">
+
+    <li *ngIf="t%2==0;else cond2">{{t}} pair</li>
+    <ng-template #cond2>
+        <li>{{t}} impair</li>
+    </ng-template>
+</ng>
+</ul>
+
+
+<h3>ngswitch</h3>
+<ul>
+<ng-container *ngFor="let t of tab">
+   <ng-container [ngSwitch]="true">
+    <li *ngSwitchCase="t%2==0">{{t}} pair</li>
+    <li *ngSwitchCase="t%2!=0">{{t}} impair</li>
+</ng-container>
+</ng-container>
+</ul>
